@@ -32,6 +32,10 @@ function Sidebar() {
                                 <i className="icon-devices_other"></i>
                                     <span className="menu-text">Banner</span>
                                 </Link>
+                                <Link to="/testapi">
+                                <i className="icon-devices_other"></i>
+                                    <span className="menu-text">TestAPI</span>
+                                </Link>
                                         <li>
                                             <a href="calendar-external-draggable.html">News</a>
                                         </li>

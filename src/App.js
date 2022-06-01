@@ -6,7 +6,7 @@ import Header from './Components/Header'
 import Dashboard from './Components/Dashboard';
 import Login from "./Components/Login_Signup/Login";
 import Breadcrumb from './Components/Breadcrumb';
-
+import TestAPI from './Components/TestAPI';
 import 'jquery';
 import 'moment';
 import Banner from "./Components/Banner";
@@ -25,6 +25,7 @@ function App() {
           <Route exact path='/' element={<Dashboard setCrumbs={setCrumbs}/>} />
           <Route exact path='/dashboard' element={<Dashboard setCrumbs={setCrumbs}/>} />
           <Route exact path='/banner' element={<Banner setCrumbs={setCrumbs}/>} />
+          <Route exact path='/testapi' element={<TestAPI setCrumbs={setCrumbs}/>} />
         </Routes>
     </>
   )

@@ -14,7 +14,7 @@ function Dashboard(props) {
     useEffect(()=>{
         props.setCrumbs(['Home','dashboard','1'])
         return ()=>{
-            console.log('bread crumb set successfully')
+            //console.log('bread crumb set successfully')
         }
     },[props.setCrumbs])
     return (
