@@ -9,14 +9,19 @@ import "../Content/css/bootstrap.min.css";
 import "../Content/fonts/style.css";
 import "../Content/css/main.css";
 import "../Content/vendor/daterange/daterange.css";
+import { Navigate } from 'react-router-dom';
 
 function Dashboard(props) {
+   
     useEffect(()=>{
         props.setCrumbs(['Home','dashboard','1'])
         return ()=>{
             //console.log('bread crumb set successfully')
         }
     },[props.setCrumbs])
+    // if(!props?.user){
+    //     return <Navigate to="/login" replace />;
+    // }
     return (
         <div>
             <div className="row gutters">
