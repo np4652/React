@@ -1,12 +1,20 @@
 import React, { useEffect,useState } from "react";
 import Modal  from "./modal/Modal";
 import Button from "./button/Button";
+import BannerService from "../Services/BannerService";
 
 function Banner(props){
     const [show, setShow] = useState(false);
     useEffect(()=>{
         props.setCrumbs(['Home','Master','Banner'])
     },[props.setCrumbs])
+
+    useEffect(()=>{
+        BannerService.getBanner().then((res) => {
+            //this.setState({ employees: res.data});
+        });
+    },[])
+
     return(
         <>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
