@@ -5,8 +5,6 @@ const getStoredAuthToken = () =>{
     return localStorage.token
 };
 
-
-
 function getHeaders() {
   return {
       accept: 'application/json',
