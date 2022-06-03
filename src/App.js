@@ -15,9 +15,9 @@ function App() {
   const [crumbs, setCrumbs] = useState(['Home', 'Dashboard']);
   const navigate = useNavigate();
   const [page, setPage] = useState(true)
-  let x = getCookie("user")
+  let x = getCookie(".milkyfie_user")
   useEffect(() => {
-    if (!getCookie('user')) {
+    if (!getCookie('.milkyfie_user')) {
       setPage(false)
       return navigate("login")
     } else {
