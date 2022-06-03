@@ -1,4 +1,4 @@
-import {React,useEffect} from "react";
+import { React, useEffect, useLayoutEffect } from "react";
 import Card1 from "./Dashboard/Card1";
 import Card2 from "./Dashboard/Card2";
 import Card3 from "./Dashboard/Card3";
@@ -9,14 +9,27 @@ import "../Content/css/bootstrap.min.css";
 import "../Content/fonts/style.css";
 import "../Content/css/main.css";
 import "../Content/vendor/daterange/daterange.css";
+import { Navigate } from 'react-router-dom';
+import { getCookie } from "./Cookie";
 
 function Dashboard(props) {
-    useEffect(()=>{
-        props.setCrumbs(['Home','dashboard','1'])
-        return ()=>{
-            //console.log('bread crumb set successfully')
+    // useLayoutEffect(() => {
+    //     if (!getCookie('user')) {
+    //         return <Navigate to="/login" replace />;
+    //     }
+    // }, [])
+
+    useEffect(() => {
+        props.setCrumbs(['Home', 'dashboard',])
+        return () => {
+            console.log('bread crumb set successfully')
         }
-    },[props.setCrumbs])
+    }, [props.setCrumbs])
+
+    // if (!getCookie('user')) {
+    //     return window.location.href = "/";
+    // }
+
     return (
         <div>
             <div className="row gutters">
