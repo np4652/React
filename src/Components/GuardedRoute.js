@@ -1,14 +1,15 @@
 import React from 'react';
-import { Route, Redirect ,Navigate,Routes } from "react-router-dom";
+import { Route, Redirect, Navigate, Routes } from "react-router-dom";
 
-const GuardedRoute = ({ component: Component, auth, ...rest }) => (
-    <Routes>
-        <Route {...rest} render={(props) => (
-            auth === true
-            ? <Component {...props} />
-            : <Navigate  to='/login' />
-        )} />
-    </Routes>
-)
+const GuardedRoute = ({
+  user,
+  redirectPath = '/login',
+  children,
+}) => {
+  if (!user) {
+    return <Navigate to={redirectPath} replace />;
+  }
+  return children;
+};
 
 export default GuardedRoute;

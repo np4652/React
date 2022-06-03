@@ -1,5 +1,5 @@
 
- export function setCookie(name, value, days){
+export function setCookie(name, value, days) {
     var expires = "";
     if (days) {
         var date = new Date();
@@ -9,7 +9,7 @@
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
-export function getCookie(name){
+export function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
@@ -20,8 +20,8 @@ export function getCookie(name){
     return null;
 }
 
-export function removeCookie (name){
+export function removeCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-export default {getCookie,setCookie,removeCookie};
+export default { getCookie, setCookie, removeCookie };

@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <div>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </div>
+  <div>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </div>
 );
 
 // If you want to tart measuring performance in your app, pass a function
