@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../Content/img/mylogo2.png";
 
 function Sidebar() {
+    const [activeMenuName, setActiveMenuName] = useState('');
+    const activeMenuHandler = (menuName) => {
+        setActiveMenuName(menuName);
+    };
     return (
         <>
             <nav id="sidebar" className="sidebar-wrapper">
@@ -17,25 +21,27 @@ function Sidebar() {
                             <li className="header-menu">General</li>
                             <li>
                                 <Link to="/dashboard">
-                                <i className="icon-devices_other"></i>
+                                    <i className="icon-devices_other"></i>
                                     <span className="menu-text">Dashboards</span>
                                 </Link>
                             </li>
-                            <li className="sidebar-dropdown">
+                            <li className={`sidebar-dropdown ${activeMenuName == 'MASTER' ? "active" : ""}`} onClick={() => activeMenuHandler('MASTER')}>
                                 <a href="#">
                                     <i className="icon-calendar1"></i>
                                     <span className="menu-text">MASTER</span>
                                 </a>
-                                <div className="sidebar-submenu" style={{display:"block!important"}}>
+                                <div className="sidebar-submenu" style={{ display: "block!important" }}>
                                     <ul>
-                                    <Link to="/banner">
-                                <i className="icon-devices_other"></i>
-                                    <span className="menu-text">Banner</span>
-                                </Link>
-                                <Link to="/testapi">
-                                <i className="icon-devices_other"></i>
-                                    <span className="menu-text">TestAPI</span>
-                                </Link>
+                                        <li>
+                                            <Link to="/banner">
+                                                <span className="menu-text">Banner</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/testapi">
+                                                <span className="menu-text">TestAPI</span>
+                                            </Link>
+                                        </li>
                                         <li>
                                             <a href="calendar-external-draggable.html">News</a>
                                         </li>
@@ -48,7 +54,7 @@ function Sidebar() {
                                     </ul>
                                 </div>
                             </li>
-                            <li className="sidebar-dropdown">
+                            <li className={`sidebar-dropdown ${activeMenuName == 'USER' ? "active" : ""}`} onClick={() => activeMenuHandler('USER')}>
                                 <a href="#">
                                     <i className="icon-calendar1"></i>
                                     <span className="menu-text">USER</span>
