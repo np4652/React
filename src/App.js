@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import './App.css';
 import Sidebar from "./Components/Sidebar";
-import Header from './Components/Header'
 import Dashboard from './Components/Dashboard';
 import Login from "./Components/Login_Signup/Login";
 import Breadcrumb from './Components/Breadcrumb';
 import TestAPI from './Components/TestAPI';
-import 'jquery';
-import 'moment';
 import Banner from "./Components/Banner";
 import { getCookie } from "./Components/Cookie";
+import TopBar from "./Components/TopBar";
 function App() {
   const [crumbs, setCrumbs] = useState(['Home', 'Dashboard']);
+  const [isPined, setIsPined] = useState(false);
   const navigate = useNavigate();
   const [page, setPage] = useState(true)
   let x = getCookie(".milkyfie_user")
@@ -23,18 +22,21 @@ function App() {
     } else {
       return setPage(true)
     }
-  }, [page, x])
+  }, [page, x, isPined])
+
+  const toogleSideBar = () => setIsPined(!isPined);
   return (
     <>
       {
         page ?
           (
-            <div className="page-wrapper">
+            <div className={`page-wrapper ${isPined ? "pinned" : ""}`} >
               <div className="page-content">
                 <div className="main-container">
                   <Sidebar></Sidebar>
                   <div className="page-content">
-                    <Header></Header>
+                    {/* <Header></Header> */}
+                    <TopBar toogleSideBar={toogleSideBar}></TopBar>
                     <Breadcrumb crumbs={crumbs}></Breadcrumb>
                   </div>
                   <Routes>
