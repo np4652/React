@@ -17,20 +17,21 @@ const ColoredLine = ({ color }) => (
 
     />
 );
-
 export default function Login() {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setpassword] = useState('');
-
+    const [formData, setFormData] = useState();
     async function getAuthenticate() {
-        var data = await postRequest(`/Account/ApiLogin?MobileNo=${email}&Password=${password}`);
-        console.log('data:', data)
+        var data = await postRequest(`/Account/ApiLogin?MobileNo=${formData.email}&Password=${formData.password}`);
+        console.log('data:', data);
         if (data.statusCode === 1) {
             setCookie('.milkyfie_user', JSON.stringify(data.result), 30)
             return navigate("dashboard")
         }
     }
+    const inputHandler = e => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
     return (
         <div style={{ "background": "#08663a" }}>
             <div className="authentication" >
@@ -47,29 +48,29 @@ export default function Login() {
                                         <input type="text"
                                             className="form-control"
                                             placeholder="Email Address"
-                                            onChange={e => setEmail(e.target.value)} />
+                                            name="email"
+                                            onChange={inputHandler} />
                                     </div>
                                     <div className="form-group">
                                         <input type="password"
                                             className="form-control"
                                             placeholder="Password"
-                                            onChange={e => setpassword(e.target.value)} />
+                                            name="password"
+                                            onChange={inputHandler} />
                                     </div>
                                     <div className="actions mb-4">
                                         <div className="custom-control custom-checkbox">
                                             <input type="checkbox" className="custom-control-input" id="remember_pwd" />
-                                            <label className="custom-control-label" for="remember_pwd">Remember me</label>
+                                            <label className="custom-control-label" htmlFor="remember_pwd">Remember me</label>
                                         </div>
                                         <button type="submit" className="btn btn-primary" onClick={getAuthenticate}>Login</button>
                                     </div>
                                     <div className="forgot-pwd">
                                         <a className="link" href="forgot-pwd.html">Forgot password?</a>
                                     </div>
-
                                     <div>
                                         <ColoredLine color="red" />
                                     </div>
-
                                     <div className="actions align-left">
                                         <span className="additional-link">New here?</span>
                                         <a href="signup.html" className="btn btn-dark">Create an Account</a>
