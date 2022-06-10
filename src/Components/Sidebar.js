@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 import logo from "../Content/img/mylogo2.png";
 
 function Sidebar() {
-    const [activeMenuName, setActiveMenuName] = useState('');
+    const [activeMenu, setActiveMenu] = useState({
+        name: '',
+        toggle: false
+    });
     const activeMenuHandler = (menuName) => {
-        setActiveMenuName(menuName);
+        setActiveMenu({
+            name: menuName,
+            toggle: !activeMenu.toggle
+        });
     };
     return (
         <>
@@ -25,7 +31,7 @@ function Sidebar() {
                                     <span className="menu-text">Dashboards</span>
                                 </Link>
                             </li>
-                            <li className={`sidebar-dropdown ${activeMenuName == 'MASTER' ? "active" : ""}`} onClick={() => activeMenuHandler('MASTER')}>
+                            <li className={`sidebar-dropdown ${activeMenu.name == 'MASTER' && activeMenu.toggle ? "active" : ""}`} onClick={() => activeMenuHandler('MASTER')}>
                                 <a href="#">
                                     <i className="icon-calendar1"></i>
                                     <span className="menu-text">MASTER</span>
@@ -54,7 +60,7 @@ function Sidebar() {
                                     </ul>
                                 </div>
                             </li>
-                            <li className={`sidebar-dropdown ${activeMenuName == 'USER' ? "active" : ""}`} onClick={() => activeMenuHandler('USER')}>
+                            <li className={`sidebar-dropdown ${activeMenu.name == 'USER' && activeMenu.toggle ? "active" : ""}`} onClick={() => activeMenuHandler('USER')}>
                                 <a href="#">
                                     <i className="icon-calendar1"></i>
                                     <span className="menu-text">USER</span>
